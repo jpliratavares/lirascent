@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/L logo.png">
+    <title>LIRA Scent - Elegance with No Apologies</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Fundo bem escuro */
+            color: #f3f4f6; /* Texto claro */
+        }
+        .hero-section {
+            /* Usando a imagem enviada pelo usuário para o fundo da hero section */
+            background-image: url('uploaded:image_d084c1.png-ff44a603-6f71-4ba4-9018-b29423a7a27e');
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Ocupa a altura total da viewport */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Overlay escuro para o texto se destacar */
+            z-index: -1;
+        }
+        .section-padding {
+            padding: 4rem 1.5rem; /* Padding padrão para seções */
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 6rem 4rem;
+            }
+        }
+        /* Custom font for LIRA, adjust as per your logo's actual font */
+        .font-lira {
+            font-family: 'Georgia', serif; /* Exemplo de fonte serifada */
+            letter-spacing: 0.1em; /* Maior espaçamento para o nome LIRA */
+        }
+        /* Custom font for NOIR, adjust as per your logo's actual font */
+        .font-noir {
+            font-family: 'Helvetica Neue', sans-serif; /* Exemplo de fonte sans-serif */
+        }
+        /* Estilo para as miniaturas de produtos/coleções futuras (mantido caso precise no futuro) */
+        .product-thumbnail {
+            width: 100%;
+            padding-bottom: 100%; /* Proporção 1:1 para um quadrado */
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+        }
+        .product-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        .pre-sale-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: #fca311; /* Laranja chamativo */
+            color: #0a0a0a;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.875rem; /* text-sm */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased">
+    <!-- Header -->
+    <header class="bg-black py-4 px-6 md:px-12 fixed w-full top-0 z-50 shadow-lg">
+        <nav class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <!-- Logo da Marca LIRA -->
+                <img src="assets/L logo.png" alt="LIRA Logo" class="h-8 w-auto">
+                <span class="text-3xl font-lira tracking-widest text-white">LIRA</span>
+            </div>
+            <ul class="hidden md:flex space-x-8 text-lg">
+                <li><a href="#home" class="hover:text-gray-400 transition duration-300">Home</a></li>
+                <li><a href="#about-brand" class="hover:text-gray-400 transition duration-300">A Marca</a></li>
+                <li><a href="#collection" class="hover:text-gray-400 transition duration-300">LIRA NOIR</a></li>
+                <li><a href="#news" class="hover:text-gray-400 transition duration-300">Notícias</a></li>
+                <li><a href="#contact" class="hover:text-gray-400 transition duration-300">Contato</a></li>
+            </ul>
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile menu dropdown -->
+        <div id="mobile-menu" class="md:hidden bg-black py-4 hidden">
+            <ul class="flex flex-col items-center space-y-4 text-lg">
+                <li><a href="#home" class="block py-2 hover:text-gray-400 transition duration-300">Home</a></li>
+                <li><a href="#about-brand" class="block py-2 hover:text-gray-400 transition duration-300">A Marca</a></li>
+                <li><a href="#collection" class="block py-2 hover:text-gray-400 transition duration-300">LIRA NOIR</a></li>
+                <li><a href="#news" class="block py-2 hover:text-gray-400 transition duration-300">Notícias</a></li>
+                <li><a href="#contact" class="block py-2 hover:text-gray-400 transition duration-300">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="mt-20">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="relative z-10 p-8 bg-black bg-opacity-60 rounded-lg shadow-xl max-w-2xl mx-auto">
+                <h1 class="text-6xl md:text-8xl font-lira text-white mb-4 tracking-wider">LIRA</h1>
+                <p class="text-3xl md:text-4xl font-noir text-gray-200 mb-8">NOIR</p>
+                <p class="text-lg md:text-xl text-gray-300 mb-10">Elegance with no apologies.</p>
+                <a href="#contact" class="inline-block bg-white text-black text-xl md:text-2xl font-bold py-4 px-10 rounded-full hover:bg-gray-300 transition duration-300 transform hover:scale-105 shadow-lg">
+                    Receba Notícias da Pré-venda!
+                </a>
+            </div>
+        </section>
+
+        <!-- About Brand Section -->
+        <section id="about-brand" class="section-padding bg-gray-900 text-center">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl md:text-5xl font-lira text-white mb-8">A Marca LIRA Scent</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="assets/logo marca.png" alt="LIRA Brand Logo" class="w-full h-auto object-contain rounded-lg shadow-xl mb-6">
+                    </div>
+                    <div class="md:w-1/2 text-left">
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+                            Na LIRA Scent, acreditamos que o perfume é uma extensão invisível, mas poderosa, da sua identidade. Cada gota de nossas fragrâncias é uma obra de arte meticulosamente criada, projetada para evocar emoções profundas e deixar uma impressão duradoura.
+                        </p>
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+                            Nossa filosofia é simples: criar aromas que não apenas cativam os sentidos, mas também inspiram confiança, sofisticação e uma presença inconfundível. Somos impulsionados pela paixão em redefinir a elegância moderna, oferecendo perfumes que são um testamento de luxo e arte.
+                        </p>
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+                            Com ingredientes cuidadosamente selecionados e uma dedicação intransigente à qualidade, a LIRA Scent convida você a "Sentir antes que te toque" – uma experiência olfativa que transcende o comum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection Section - Foco no LIRA NOIR com Lista de Espera -->
+        <section id="collection" class="section-padding bg-black">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-lira text-white mb-12">LIRA NOIR</h2>
+
+                <div class="flex justify-center">
+                    <!-- LIRA NOIR Product Card com Pré-venda por Lista de Espera -->
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-2xl transition-transform transform hover:scale-105 duration-300 relative max-w-lg w-full">
+                        <span class="pre-sale-badge">Pré-venda em Breve!</span> <!-- Badge ajustado -->
+                        <h3 class="text-3xl font-lira text-white mb-4 text-center">LIRA NOIR</h3>
+                        <p class="text-xl font-noir text-gray-300 mb-6 text-center">Eau de Parfum - 100ml</p>
+
+                        <div class="flex flex-col items-center mb-6">
+                            <img src="assets/both.png" alt="LIRA NOIR Bottle and Box" class="w-full h-auto object-contain rounded-lg mb-4 shadow-lg mx-auto">
+                        </div>
+
+                        <p class="text-md text-gray-400 leading-relaxed mb-4">
+                            LIRA NOIR é a personificação da elegância noturna e do mistério sedutor. Seja um dos primeiros a garantir este lançamento exclusivo! Cadastre-se na nossa lista de espera e receba acesso prioritário e notícias exclusivas sobre a disponibilidade.
+                        </p>
+                        <p class="text-lg font-bold text-white mb-6 text-center">
+                            Entrega a partir de começo de 2026
+                        </p>
+
+                        <div class="flex justify-center">
+                            <a href="#contact" class="inline-block bg-white text-black text-xl font-bold py-3 px-8 rounded-full hover:bg-gray-300 transition duration-300 shadow-md">
+                                Junte-se à Lista de Espera!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram CTA Section -->
+        <section class="section-padding bg-gray-950 text-center">
+            <div class="container mx-auto max-w-3xl">
+                <h2 class="text-4xl md:text-5xl font-lira text-white mb-8">Conecte-se Conosco</h2>
+                <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+                    Siga-nos no Instagram para ficar por dentro das últimas novidades, inspirações e bastidores da LIRA Scent.
+                </p>
+                <a href="https://www.instagram.com/lirascent/" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-black text-xl md:text-2xl font-bold py-4 px-10 rounded-full hover:bg-gray-300 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-instagram mr-3"></i> @lirascent
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section - Agora com foco na Lista de Pré-Venda -->
+        <section id="contact" class="section-padding bg-gray-900">
+            <div class="container mx-auto max-w-2xl text-center">
+                <h2 class="text-4xl md:text-5xl font-lira text-white mb-8">Lista de Espera LIRA NOIR</h2>
+                <p class="text-lg text-gray-300 mb-8">
+                    Seja um dos primeiros a ser notificado sobre o lançamento e acesso à compra do LIRA NOIR. Cadastre-se abaixo para receber atualizações exclusivas!
+                </p>
+                <form class="space-y-6" action="https://formspree.io/f/xqabdbyw" method="POST">
+                    <!-- ATENÇÃO: Substitua 'seuIDdoFormspreeAqui' pelo ID real que o Formspree te der -->
+                    <div>
+                        <input type="text" id="name" name="name" placeholder="Seu Nome" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-400">
+                    </div>
+                    <div>
+                        <input type="email" id="email" name="email" placeholder="Seu E-mail" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-400">
+                    </div>
+                    <div>
+                        <textarea id="message" name="message" rows="6" placeholder="Sua Mensagem (Opcional)" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white placeholder-gray-400"></textarea>
+                    </div>
+                    <button type="submit" class="bg-white text-black text-xl font-bold py-3 px-8 rounded-full hover:bg-gray-300 transition duration-300 transform hover:scale-105 shadow-md">
+                        Juntar-se à Lista de Espera
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 px-6 md:px-12 text-center text-gray-400">
+        <div class="container mx-auto">
+            <p>&copy; 2025 LIRA Scent. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="https://www.instagram.com/lirascent/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <!-- Adicionar outros links sociais conforme necessário -->
+                <!-- <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f fa-2x"></i></a> -->
+                <!-- <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter fa-2x"></i></a> -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
